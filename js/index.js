@@ -45,11 +45,10 @@ word[1] = new Word("administer", "治める、執行する、仕える");
 word[2] = new Word("minister", "大臣、牧師");
 word[3] = new Word("minute", "細かい、綿密な");
 word[4] = new Word("diminish","減少する、小さくなる");
-word[5] = new Word("","")
+word[5] = new Word("minor","未成年者")
 console.log(word.length);
 
-//押された時に、その場所を感知する。
-//box[0][0] = document.getElementById("a");
+// boxに、htmlのidを入力
 for (i = 0; i < NUM_LINE; i++) {
   for (j = 0; j < NUM_COLMUN; j++) {
     box[i][j] = document.getElementById(`a[${i}][${j}]`);
@@ -87,16 +86,22 @@ function Display(a) {
     box[3][0].innerText = word[ansWord[3]].eng
     box[3][1].innerText = word[ansWord[3]].jap
     answer.innerText = wordNum[0]
+     console.log("word",word[rand[wordNum[0]-1]].eng)
   }
 }
 
-setInterval(`Count()`, 1000);
+// for(let i=0;i<4;i++) setTimeout("Count()", 1000);
+let time = setInterval(`Count()`, 500);
+
 function Count() {
-  k++;
-  Display(k);
-  console.log(k);
+  k++
+  Display(k)
+  console.log(k)
+  if(k==6) clearTimeout(time)
 }
 
-function Answer(){
-  if(wordNum[0]===)
+function put(obj){
+  if(obj.innerText === word[rand[wordNum[0]-1]].eng||obj.innerText === word[rand[wordNum[0]-1]].jap){
+    alert("Correct answer")
+  }else{alert("failes")}
 }
